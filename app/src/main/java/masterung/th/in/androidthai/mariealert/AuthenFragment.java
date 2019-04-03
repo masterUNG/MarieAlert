@@ -9,7 +9,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 
 
 /**
@@ -33,11 +35,43 @@ public class AuthenFragment extends Fragment {
 //       Initial View
         checkBox = getView().findViewById(R.id.chbRemember);
 
-
 //        Check Remember
         checkRemember();
 
+//        Login Controller
+        loginController();
+
     }   // Main Method
+
+    private void loginController() {
+        Button button = getView().findViewById(R.id.btnLogin);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                EditText userEditText = getView().findViewById(R.id.edtUser);
+                EditText passwordEditText = getView().findViewById(R.id.edtPassword);
+
+                String user = userEditText.getText().toString().trim();
+                String password = passwordEditText.getText().toString().trim();
+
+                MasterAlert masterAlert = new MasterAlert(getActivity());
+
+                if (user.isEmpty() || password.isEmpty()) {
+//                    Have Space
+                    masterAlert.normalDialog(myConstant.getTitleHaveSpace(), myConstant.getMessageHaveSpace());
+                } else {
+                }
+
+            }   // onClick
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        checkRemember();
+    }
 
     private void checkRemember() {
 
