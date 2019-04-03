@@ -1,14 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AuthenFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!--Content-->
+    <LinearLayout
+        android:layout_margin="@dimen/magin"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <!--User-->
+        <EditText
+            android:id="@+id/edtUser"
+            android:inputType="text"
+            android:hint="@string/user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!--Password-->
+        <EditText
+            android:id="@+id/edtPassword"
+            android:inputType="textPassword"
+            android:hint="@string/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!--Login-->
+        <Button
+            android:id="@+id/btnLogin"
+            android:text="Login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!--Remember-->
+        <CheckBox
+            android:id="@+id/chbRemember"
+            android:text="Remember Me"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</RelativeLayout>
