@@ -2,6 +2,7 @@ package masterung.th.in.androidthai.mariealert;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -79,7 +80,15 @@ public class AuthenFragment extends Fragment {
                             JSONArray jsonArray = new JSONArray(result);
                             JSONObject jsonObject = jsonArray.getJSONObject(0);
                             if (password.equals(jsonObject.getString("Password"))) {
-
+                                if (checkBox.isChecked()) {
+                                    SharedPreferences sharedPreferences = getActivity().getSharedPreferences(myConstant.getRememberFile(), Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putInt("id", Integer.parseInt(jsonObject.getString("id")));
+                                    editor.putInt("Type", Integer.parseInt(jsonObject.getString("Type")));
+                                    editor.putBoolean("StatusLogin", true);
+                                    editor.commit();
+                                }
+                                moveToService();
                             } else {
                                 masterAlert.normalDialog(myConstant.getTitlePasswordFalse(), myConstant.getMessagePasswordFalse());
                             }
@@ -94,6 +103,11 @@ public class AuthenFragment extends Fragment {
 
             }   // onClick
         });
+    }
+
+    private void moveToService() {
+        getActivity().startActivity(new Intent(getActivity(), MainServiceActivity.class));
+        getActivity().finish();
     }
 
     @Override
@@ -111,7 +125,7 @@ public class AuthenFragment extends Fragment {
             statusLoginABoolean = sharedPreferences.getBoolean("StatusLogin", false);
 
             if (statusLoginABoolean) {
-
+                moveToService();
             }
 
         } catch (Exception e) {
