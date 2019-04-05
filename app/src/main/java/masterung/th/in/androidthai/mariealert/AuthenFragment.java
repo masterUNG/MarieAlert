@@ -14,6 +14,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -73,7 +76,13 @@ public class AuthenFragment extends Fragment {
                         if (result.equals("null")) {
                             masterAlert.normalDialog(myConstant.getTitleUserFalse(), myConstant.getMessageUserFalse());
                         } else {
+                            JSONArray jsonArray = new JSONArray(result);
+                            JSONObject jsonObject = jsonArray.getJSONObject(0);
+                            if (password.equals(jsonObject.getString("Password"))) {
 
+                            } else {
+                                masterAlert.normalDialog(myConstant.getTitlePasswordFalse(), myConstant.getMessagePasswordFalse());
+                            }
                         }
 
 
