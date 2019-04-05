@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,25 @@ public class AuthenFragment extends Fragment {
 //                    Have Space
                     masterAlert.normalDialog(myConstant.getTitleHaveSpace(), myConstant.getMessageHaveSpace());
                 } else {
+
+                    try {
+
+                        GetUserWhereOneColumnThread getUserWhereOneColumnThread = new GetUserWhereOneColumnThread(getActivity());
+                        getUserWhereOneColumnThread.execute("User", user, myConstant.getUrlGetUserWhereUser());
+                        String result = getUserWhereOneColumnThread.get();
+                        Log.d("5AprilV1", "result ==>>> " + result);
+
+                        if (result.equals("null")) {
+                            masterAlert.normalDialog(myConstant.getTitleUserFalse(), myConstant.getMessageUserFalse());
+                        } else {
+
+                        }
+
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
                 }
 
             }   // onClick
