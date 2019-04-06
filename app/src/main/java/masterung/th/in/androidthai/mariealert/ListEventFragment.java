@@ -2,7 +2,9 @@ package masterung.th.in.androidthai.mariealert;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +16,19 @@ import android.view.ViewGroup;
 public class ListEventFragment extends Fragment {
 
 
+
+
     public ListEventFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+
+
+    }   // Main Method
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
