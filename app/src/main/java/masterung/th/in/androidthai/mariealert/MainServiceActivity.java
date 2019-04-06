@@ -46,7 +46,8 @@ public class MainServiceActivity extends AppCompatActivity {
     }
 
     private void myLogout() {
-        SharedPreferences sharedPreferences = MainServiceActivity.this.getSharedPreferences(myConstant.getRememberFile(), MODE_PRIVATE);
+        SharedPreferences sharedPreferences = MainServiceActivity.this
+                .getSharedPreferences(myConstant.getRememberFile(), MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.commit();
